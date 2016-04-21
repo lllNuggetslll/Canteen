@@ -1,5 +1,6 @@
 var tripsController = require('./trips/tripsController');
 var userController = require('./users/userController');
+var messagesController = require('./messages/messagesController');
 var Purest = require('purest');
 
 var google = new Purest({ provider: 'google' });
@@ -51,6 +52,19 @@ module.exports = function (app) {
   app.route('/api/tasks/add/:tripId')
     .post(checkUser, function (req, res) {
       tripsController.addTask(req, function (err, data) {
+        sendResponse(res, err, data, 201);
+      });
+    });
+
+  /* Message Routes */
+  app.route('/api/messages/:tripId')
+    .get(checkUser, function (req, res) {
+      messagesController.getMessages(req, function (err, data) {
+        sendResponse(res, err, data, 200);
+      });
+    })
+    .post(checkUser, function (req, res) {
+      messagesController.addMessage(req, function (err, data) {
         sendResponse(res, err, data, 201);
       });
     });
