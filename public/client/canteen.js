@@ -8,6 +8,8 @@ angular.module('canteen', [
   'canteen.taskView',
   'canteen.trip',
   'canteen.tripForm',
+  'canteen.userTrips',
+  'canteen.userTripsCtrl',
   'ngMap',
   'ui.bootstrap',
   'ui.router',
@@ -27,8 +29,13 @@ angular.module('canteen', [
       controller: 'tripForm'
     })
     .state('tripView', {
-      url: '/trip',
+      url: '/trip/:tripId',
       templateUrl: 'client/trip/tripView.html',
       controller: 'tripCtrl',
+    })
+    .state('userTrips', {
+      url: '/trips',
+      templateUrl: 'client/usertrips/usertrips.html',
+      controller: 'userTripsCtrl'
     });
 });
