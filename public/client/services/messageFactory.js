@@ -10,11 +10,14 @@ angular.module('canteen.messageFactory', [])
         url: '/api/messages/' + tripId
       })
       .then(function (resp) {
-        resp.data.map(function (msg) {
-          msg.displayTime = timeHelper.convertTime(msg.createdAt);
-          return msg;
-        });
-        return resp.data;
+        console.log(resp.data);
+        if (Array.isArray(resp.data)) {
+          resp.data.map(function (msg) {
+            msg.displayTime = timeHelper.convertTime(msg.createdAt);
+            return msg;
+          });
+          return resp.data;
+        }
       })
       .catch(function (err) {
         console.error(err);
