@@ -3,8 +3,8 @@ angular.module('canteen.navBar', [])
 .controller('navBar', [
   '$scope',
   '$location',
-  'navFactory',
-  function ($scope, $location, navFactory) {
+  'authFactory',
+  function ($scope, $location, authFactory) {
     $scope.location = $location.path();
 
     $scope.logOut = function () {

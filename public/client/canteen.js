@@ -3,6 +3,7 @@ angular.module('canteen', [
   'canteen.forms',
   'canteen.navHelper',
   'canteen.tripData',
+  'canteen.messageFactory',
   'canteen.navBar',
   'canteen.taskForm',
   'canteen.taskView',
@@ -10,9 +11,12 @@ angular.module('canteen', [
   'canteen.tripForm',
   'canteen.userTrips',
   'canteen.userTripsCtrl',
+  'canteen.tripMessages',
+  'canteen.socketFactory',
+  'btford.socket-io',
   'ngMap',
   'ui.bootstrap',
-  'ui.router',
+  'ui.router'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {

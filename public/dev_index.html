@@ -7,9 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="client/style.css">
 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-socket-io/socket.js"></script>
   <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
   <script src="bower_components/moment/min/moment.min.js"></script>
   <script src="http://maps.google.com/maps/api/js"></script>
@@ -18,9 +20,12 @@
   <script src="client/navbar/navBar.js"></script>
   <script src="client/services/navHelper.js"></script>
   <script src="client/trip-form/tripForm.js"></script>
+  <script src="client/trip-messages/tripMessages.js"></script>
   <script src="client/services/forms.js"></script>
   <script src="client/services/tripData.js"></script>
   <script src="client/services/userTrips.js"></script>
+  <script src="client/services/messageFactory.js"></script>
+  <script src="client/services/socketFactory.js"></script>
   <script src="client/landing-page/landingPage.js"></script>
   <script src="client/task-view/taskView.js"></script>
   <script src="client/task-form/taskForm.js"></script>

@@ -14,11 +14,10 @@ module.exports = {
   // add message to chat
   addMessage: function (req, next) {
     Message.create({
-      trip_id: req.body.tripId,
-      username: req.body.username,
+      trip_id: req.params.tripId,
+      username: req.session.user.given_name + ' ' + req.session.user.family_name,
       message: req.body.message,
     }, function (err, message) {
-      // at this point, broadcast chat msg to all users in a given trip room
       next(err, message);
     });
   }

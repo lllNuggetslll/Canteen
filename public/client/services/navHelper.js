@@ -1,8 +1,9 @@
 angular.module('canteen.navHelper', [])
 
-.factory('navFactory', [
+.factory('authFactory', [
   '$http',
   function($http) {
+
     function endSession () {
       return $http({
         method: 'GET',

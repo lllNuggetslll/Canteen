@@ -1,0 +1,16 @@
+<!-- Add Message -->
+<div class="col-sm-4 col-sm-push-8">
+  <form name="addMessageForm" ng-submit="submitMessage(addMessageForm.$valid)" novalidate>
+    <input type="text" ng-model="messageForm.message"></input>
+    <button>Submit</button>
+  </form>
+</div>
+
+<!-- Messages Display -->
+<div class="col-sm-8 col-sm-pull-4">
+  <div class="message" ng-repeat="message in messages | orderBy:'-createdAt'">
+    <h5>{{ message.username }}</h5>
+    <h6>{{ message.createdAt }}</h6>
+    <p>{{ message.message }}</p>
+  </div>
+</div>
