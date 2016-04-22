@@ -10,7 +10,6 @@ angular.module('canteen.messageFactory', [])
         url: '/api/messages/' + tripId
       })
       .then(function (resp) {
-        console.log(resp.data);
         if (Array.isArray(resp.data)) {
           resp.data.map(function (msg) {
             msg.displayTime = timeHelper.convertTime(msg.createdAt);

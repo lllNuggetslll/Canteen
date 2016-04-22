@@ -9,6 +9,7 @@ angular.module('canteen', [
   'canteen.taskView',
   'canteen.trip',
   'canteen.tripForm',
+  'canteen.user',
   'canteen.userTrips',
   'canteen.userTripsCtrl',
   'canteen.tripMessages',
@@ -40,7 +41,7 @@ angular.module('canteen', [
     })
     .state('userTrips', {
       url: '/trips',
-      templateUrl: 'client/usertrips/usertrips.html',
-      controller: 'userTripsCtrl'
+      templateUrl: 'client/user/userView.html',
+      controller: 'userCtrl'
     });
 });

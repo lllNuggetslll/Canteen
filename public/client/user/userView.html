@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="table-margin">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ username }}</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <!-- Left column: User Profile Info -->
+        <div class="col-sm-3">
+          Profile Information
+        </div>
+
+        <!-- Right column: User Trips Info -->
+        <div class="col-sm-9" ng-controller="userTripsCtrl" ng-include="'../client/usertrips/usertrips.html'"></div>
+
+      </div> <!-- /panel-body -->
+
+    </div>
+  </div>
+</div>
