@@ -30,7 +30,9 @@ module.exports = function (app, express) {
   app.use(bodyParser.json());
   // specify session secret for new sessions
   app.use(session({
-    secret: process.env.SESSION_SECRET || require('../.config/.secrets.json')['session']['secret']
+    secret: process.env.SESSION_SECRET || require('../.config/.secrets.json')['session']['secret'],
+    resave: false,
+    saveUninitialized: true
   }));
   app.use(grant);
   app.use(express.static(__dirname + '/../../public', {

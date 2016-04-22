@@ -3,14 +3,20 @@ angular.module('canteen', [
   'canteen.forms',
   'canteen.navHelper',
   'canteen.tripData',
+  'canteen.messageFactory',
   'canteen.navBar',
   'canteen.taskForm',
   'canteen.taskView',
   'canteen.trip',
   'canteen.tripForm',
+  'canteen.userTrips',
+  'canteen.userTripsCtrl',
+  'canteen.tripMessages',
+  'canteen.socketFactory',
+  'btford.socket-io',
   'ngMap',
   'ui.bootstrap',
-  'ui.router',
+  'ui.router'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -27,8 +33,13 @@ angular.module('canteen', [
       controller: 'tripForm'
     })
     .state('tripView', {
-      url: '/trip',
+      url: '/trip/:tripId',
       templateUrl: 'client/trip/tripView.html',
       controller: 'tripCtrl',
+    })
+    .state('userTrips', {
+      url: '/trips',
+      templateUrl: 'client/usertrips/usertrips.html',
+      controller: 'userTripsCtrl'
     });
 });
