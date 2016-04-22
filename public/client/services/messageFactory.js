@@ -2,13 +2,18 @@ angular.module('canteen.messageFactory', [])
 
 .factory('messageFactory', [
   '$http',
-  function ($http) {
+  'timeHelper',
+  function ($http, timeHelper) {
     function getMessages(tripId) {
       return $http({
         method: 'GET',
         url: '/api/messages/' + tripId
       })
       .then(function (resp) {
+        resp.data.map(function (msg) {
+          msg.displayTime = timeHelper.convertTime(msg.createdAt);
+          return msg;
+        });
         return resp.data;
       })
       .catch(function (err) {
@@ -35,5 +40,5 @@ angular.module('canteen.messageFactory', [])
       getMessages: getMessages,
       addMessage: addMessage
     };
-  },
+  }
 ]);

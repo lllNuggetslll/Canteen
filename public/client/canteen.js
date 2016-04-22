@@ -13,6 +13,7 @@ angular.module('canteen', [
   'canteen.userTripsCtrl',
   'canteen.tripMessages',
   'canteen.socketFactory',
+  'canteen.timeHelper',
   'btford.socket-io',
   'ngMap',
   'ui.bootstrap',

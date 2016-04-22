@@ -7,6 +7,7 @@ angular.module('canteen.trip', [])
   '$stateParams',
   function ($scope, trip, NgMap, $stateParams) {
     $scope.trip = null;
+    // console.log($stateParams.tripId);
     trip.getTrip($stateParams.tripId)
     .then(function (tripData) {
       $scope.trip = tripData;
