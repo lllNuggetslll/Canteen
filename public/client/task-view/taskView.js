@@ -1,8 +1,9 @@
-angular.module('canteen.taskView', [])
+angular.module('canteen.taskView', ['xeditable'])
 
 .controller('taskView', [
   '$scope',
   'trip',
+  'formFactory'
   function ($scope, trip) {
     $scope.updateStatus = function (task) {
       // Toggles status code between 0 and 1
@@ -11,4 +12,14 @@ angular.module('canteen.taskView', [])
       trip.updateStatus($scope.trip);
     };
   },
+
+
+    $scope.updateTask = function(){
+
+
+
+    }
+
+
+
 ]);
