@@ -18,6 +18,7 @@ angular.module('canteen.userTrips', [])
       .catch(function(err) {
         console.error(err);
       });
+    };
 
     var updateUser = function(data, userId) {
       return $http({
