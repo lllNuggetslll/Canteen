@@ -4,8 +4,9 @@ angular.module('canteen.taskView', ['xeditable'])
   '$scope',
   'trip',
   'formFactory'
-  function ($scope, trip) {
-    $scope.updateStatus = function (task) {
+
+  function($scope, trip) {
+    $scope.updateStatus = function(task) {
       // Toggles status code between 0 and 1
       // and updates in db
       task.statusCode = task.statusCode ? 0 : 1;
@@ -14,11 +15,11 @@ angular.module('canteen.taskView', ['xeditable'])
   },
 
 
-    $scope.updateTask = function(){
+  $scope.updateTask = function() {
 
+    console.log($scope.trip)
 
-
-    }
+  }
 
 
 
