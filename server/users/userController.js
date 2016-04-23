@@ -33,7 +33,7 @@ module.exports = {
   },
 
   getUser: function (userId, next) {
-    User.findOne({ _id: userId })
+    User.findOne({ id: userId })
     .exec(function (err, user) {
       next(err, user);
     });

@@ -1,4 +1,4 @@
-<div>
+<div ng-if="!noTrips">
   <div ng-repeat="trip in trips | orderBy: 'uglyStart'">
     <a ng-href="#/trip/{{ trip.id }}">
       <div>
@@ -8,4 +8,9 @@
       </div>
     </a>
   </div>
+</div>
+
+<div ng-if="noTrips">
+  <h4>You don't have any trips planned yet!</h4>
+  <a ng-href="#/trip-form"><button class="buttons btn">Create Trip!</button></a>
 </div>

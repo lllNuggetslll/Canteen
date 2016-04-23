@@ -10,7 +10,37 @@
 
         <!-- Left column: User Profile Info -->
         <div class="col-sm-3">
-          {{ user.given_name }} {{ user.family_name }}
+          <h4>{{ user.email }}</h4>
+
+          <div ng-if="!updateAble">
+            <p>
+              <b>My favorite destinations:</b>
+              <br>
+              {{ user.favorite_trips }}
+            </p>
+            <p>
+              <b>About me:</b>
+              <br>
+              {{ user.bio }}
+            </p>
+            <button class="buttons btn" ng-click="toggleProfileUpdate()">Update Profile</button>
+          </div>
+
+          <div ng-if="updateAble">
+            <form id="userUpdateForm" ng-submit="updateProfile()" novalidate>
+              <label for="favorite-trips">My favorite destinations:</label>
+              <input class="form-control" id="favorite-trips" type="text" ng-model="user.favorite_trips" required></input>
+
+              <label for="user-bio">About me:</label>
+              <input class="form-control" id="user-bio" type="text" ng-model="user.bio" required></input>
+              
+              <br>
+
+              <button class="buttons btn" type="submit" ng-disabled="userUpdateForm.$invalid">Submit</button>
+              <button class="buttons btn" ng-click="toggleProfileUpdate()">Cancel</button>
+            </form>
+          </div>
+
         </div>
 
         <!-- Right column: User Trips Info -->

@@ -4,6 +4,19 @@ angular.module('canteen.navHelper', [])
   '$http',
   function($http) {
 
+    function setUser () {
+      return $http({
+        method: 'GET',
+        url: '/api/setuser'
+      })
+      .then(function (resp) {
+        return resp.data;
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+    }
+
     function endSession () {
       return $http({
         method: 'GET',
@@ -19,7 +32,8 @@ angular.module('canteen.navHelper', [])
 
     // Factory methods return promises
     return {
-      endSession: endSession,
+      setUser: setUser,
+      endSession: endSession
     };
   },
 ]);

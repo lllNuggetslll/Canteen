@@ -31,8 +31,11 @@ module.exports = function (app) {
   app.route('/api/user/:userId', checkUser)
     .get(checkUser, function(req, res) {
       userController.getUser(req.params.userId, function(err, user) {
-        if (err) {
-          sendResponse(res, err, user, 404);
+        if (!user) {
+          sendResponse(res, err, {
+            user : req.session.user,
+            trips : false
+          }, 200);
         } else {
           tripsController.getAllUserTrips(user.email, function(err, trips) {
             sendResponse(res, err, {
@@ -42,6 +45,16 @@ module.exports = function (app) {
           });
         }
       });
+    });
+
+  /* Set User */
+  app.route('/api/setuser', checkUser)
+    .get(checkUser, function(req, res) {
+      var userObj = {};
+      if (req.session.user) {
+        userObj.userId = req.session.user.id;
+      }
+      res.send(200, userObj);
     });
 
   /* Single Trip Routes */
@@ -99,7 +112,7 @@ module.exports = function (app) {
         userController.createUser(body, function (err, user) {
           // set session user to returned record
           req.session.user = user;
-          res.redirect('/#/user/' + user._id);
+          res.redirect('/#/user/' + user.id);
         });
       });
     });
@@ -107,11 +120,7 @@ module.exports = function (app) {
   app.route('/logout')
     .get(function (req, res) {
       req.session.destroy(function (err) {
-        if (err) {
-          console.error(err);
-        } else {
-          res.redirect('/');
-        }
+        sendResponse(res, err, {}, 200);
       });
     });
 };

@@ -8,6 +8,17 @@ angular.module('canteen.navBar', [])
     $scope.location = $location.path();
 
     // get the userId on the scope so it can be used in the navbar link
+    // also set a logged in/logged out state here
+    $scope.userId = null;
+    $scope.loggedIn = false;
+
+    authFactory.setUser()
+      .then(function(user) {
+        if (user.userId) {
+          $scope.userId = user.userId;
+          $scope.loggedIn = true;
+        }
+      });
 
     $scope.logOut = function () {
       // After session has been destroyed, redirect to landing page
@@ -15,8 +26,9 @@ angular.module('canteen.navBar', [])
       authFactory.endSession()
         .then(function(data) {
           $location.path('/#/landing-page');
+          $scope.userId = null;
+          $scope.loggedIn = false;
         });
-      window.location.reload(true);
     };
   },
 ]);

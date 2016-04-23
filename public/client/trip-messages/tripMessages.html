@@ -1,21 +1,23 @@
-<!-- Add Message -->
-<div class="col-sm-5 col-sm-push-7">
-  <form name="addMessageForm" ng-submit="submitMessage(addMessageForm.$valid)" novalidate>
-    <div class="form-group">
-      <label for="inputMessage">New Message:</label>
-      <input type="text" class="form-control" placeholder="Your message to the group" id="inputMessage" ng-model="messageForm.message" required></input>
+<div class="col-sm-12">
+  <!-- Add Message -->
+  <section class="col-sm-5 col-sm-push-7">
+    <form name="addMessageForm" ng-submit="submitMessage(addMessageForm.$valid)" novalidate>
+      <div class="form-group">
+        <label for="inputMessage">New Message:</label>
+        <input type="text" class="form-control" placeholder="Your message to the group" id="inputMessage" ng-model="messageForm.message" required></input>
+      </div>
+      <button class="buttons btn" ng-disabled="addMessageForm.$invalid" disabled="disabled">Submit</button>
+    </form>
+  </section>
+  <!-- Messages Display -->
+  <section class="col-sm-7 col-sm-pull-5">
+    <div class="panel panel-default" ng-repeat="message in messages | orderBy:'-createdAt'">
+      <div class="panel-heading">
+        <h5 class="panel-title">{{ message.username }} <small>{{ message.displayTime }}</small></h5>
+      </div>
+      <div class="panel-body">
+        {{ message.message }}
+      </div>
     </div>
-    <button class="buttons btn" ng-disabled="addMessageForm.$invalid" disabled="disabled">Submit</button>
-  </form>
-</div>
-<!-- Messages Display -->
-<div class="col-sm-7 col-sm-pull-5">
-  <div class="panel panel-default" ng-repeat="message in messages | orderBy:'-createdAt'">
-    <div class="panel-heading">
-      <h5 class="panel-title">{{ message.username }} <small>{{ message.displayTime }}</small></h5>
-    </div>
-    <div class="panel-body">
-      {{ message.message }}
-    </div>
-  </div>
+  </section>
 </div>
