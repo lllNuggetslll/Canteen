@@ -39,8 +39,8 @@ angular.module('canteen', [
       templateUrl: 'client/trip/tripView.html',
       controller: 'tripCtrl',
     })
-    .state('userTrips', {
-      url: '/trips',
+    .state('userView', {
+      url: '/user/:userId',
       templateUrl: 'client/user/userView.html',
       controller: 'userCtrl'
     });

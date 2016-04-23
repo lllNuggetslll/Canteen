@@ -5,10 +5,10 @@ angular.module('canteen.userTripsCtrl', [])
   '$location',
   'userTrips',
   function($scope, $location, userTrips) {
-    $scope.data = {};
-    userTrips.getTrips()
-      .then(function(trips) {
-        $scope.data.trips = userTrips.poulateTrips(trips);
-      });
+    // $scope.data = {};
+    // userTrips.getTrips()
+    //   .then(function(trips) {
+    //     $scope.data.trips = userTrips.poulateTrips(trips);
+    //   });
   }
 ]);

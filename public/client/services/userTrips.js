@@ -4,12 +4,15 @@ angular.module('canteen.userTrips', [])
   '$http',
   function($http) {
 
-    var getTrips = function() {
+    // might want to use user email as a parameter to return 
+    // only those trips that this user is a part of (invited to)
+    var getUserInfo = function(userId) {
       return $http({
         method: 'GET',
-        url: '/api/trips'
+        url: '/api/user/' +  userId
       })
       .then(function(res) {
+        console.log(res.data);
         return res.data;
       })
       .catch(function(err) {
@@ -36,7 +39,7 @@ angular.module('canteen.userTrips', [])
     };
 
     return {
-      getTrips: getTrips,
+      getUserInfo: getUserInfo,
       poulateTrips: poulateTrips
     };
   }

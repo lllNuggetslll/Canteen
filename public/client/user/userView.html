@@ -3,14 +3,14 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <h3 class="panel-title">{{ username }}</h3>
+        <h3 class="panel-title">{{ user.given_name }} {{ user.family_name }}</h3>
       </div>
 
       <div class="panel-body">
 
         <!-- Left column: User Profile Info -->
         <div class="col-sm-3">
-          Profile Information
+          {{ user.given_name }} {{ user.family_name }}
         </div>
 
         <!-- Right column: User Trips Info -->

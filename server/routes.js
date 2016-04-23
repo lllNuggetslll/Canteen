@@ -27,11 +27,20 @@ var checkUser = function (req, res, next) {
 
 module.exports = function (app) {
 
-/* All User's Trips */
-  app.route('/api/trips/', checkUser)
+  /* All User's Info */
+  app.route('/api/user/:userId', checkUser)
     .get(checkUser, function(req, res) {
-      tripsController.getAllUserTrips(req.session.user.email, function(err, data) {
-        sendResponse(res, err, data, 200);
+      userController.getUser(req.params.userId, function(err, user) {
+        if (err) {
+          sendResponse(res, err, user, 404);
+        } else {
+          tripsController.getAllUserTrips(user.email, function(err, trips) {
+            sendResponse(res, err, {
+              user : user,
+              trips : trips
+            }, 200);
+          });
+        }
       });
     });
 
@@ -90,13 +99,7 @@ module.exports = function (app) {
         userController.createUser(body, function (err, user) {
           // set session user to returned record
           req.session.user = user;
-          tripsController.searchTripsForUser(user.email, function (err, trip) {
-            if (trip === null) {
-              res.redirect('/#/trip-form');
-            } else {
-              res.redirect('/#/trips');
-            }
-          });
+          res.redirect('/#/user/' + user._id);
         });
       });
     });
