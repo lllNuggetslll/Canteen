@@ -3,7 +3,7 @@ angular.module('canteen.taskView', ['xeditable'])
 .controller('taskView', [
   '$scope',
   'trip',
-  'formFactory'
+  'formFactory',
 
   function($scope, trip) {
     $scope.updateStatus = function(task) {
@@ -12,14 +12,14 @@ angular.module('canteen.taskView', ['xeditable'])
       task.statusCode = task.statusCode ? 0 : 1;
       trip.updateStatus($scope.trip);
     };
+    $scope.updateTask = function() {
+      formFactory.submitTaskUpdate($scope.trip.task )
+      console.log($scope.trip.task)
+
+    }
   },
 
 
-  $scope.updateTask = function() {
-
-    console.log($scope.trip)
-
-  }
 
 
 
