@@ -12,7 +12,6 @@ angular.module('canteen.taskForm', [])
 
     $scope.createTask = function () {
       formFactory.submitTask($scope.taskForm, $scope.trip._id);
-      console.log($scope.taskForm)
       $scope.taskForm = {
         statusCode: 0
       };

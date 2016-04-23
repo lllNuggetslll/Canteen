@@ -49,6 +49,7 @@ angular.module('canteen.forms', [])
     return {
       submitTrip: submitTrip,
       submitTask: submitTask,
+      submitTaskUpdate:submitTaskUpdate
     };
   },
 ]);
