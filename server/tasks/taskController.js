@@ -4,14 +4,14 @@ module.exports = {
   addTask: function(req, next) {
     var task = req.body;
     var newTask = {
+      tripId: req.params.tripId,
       statusCode: task.statusCode,
       taskName: task.taskName,
-      description: task.descripton,
+      description: task.description,
       category: task.category,
       assignedTo: task.assignedTo.email
     }
-    console.log(13, newTask)
-    Task.create(newTask, function (err){
+    Task.create(newTask, function(err) {
       next(err, newTask);
     });
 
@@ -21,9 +21,16 @@ module.exports = {
     var task = req.body.task
     Task.find({ tripId: req.params.tripId })
       .where('tasks._Id').equals(req.params.taskId)
-      .update({ task: task.task, description: task.description, category: task.category, statusCode: task.statusCode, assignedTo: task.assignedTo }, function(err, task) {
+      .update({ taskName: task.taskName, description: task.description, category: task.category, statusCode: task.statusCode, assignedTo: task.assignedTo }, function(err, task) {
         next(err, task);
       });
+  },
+
+  getAllTasks: function(req, next) {
+    Task.find({ tripId: req.params.tripId })
+      .exec(function(err, tasks) {
+        next(err, tasks);
+      })
   }
 }
 

@@ -30,26 +30,10 @@ angular.module('canteen.forms', [])
           console.error(err);
         });
     }
-
-    function submitTaskUpdate(taskData, tripId) {
-      return $http({
-          method: "PUT",
-          url: '/api/tasks/update' + tripId,
-          data: taskData
-        })
-        .then(function(resp) {
-          return resp.data
-        })
-        .catch(function(err) {
-          console.error(err);
-        })
-    }
-
     // Factory methods return promises
     return {
       submitTrip: submitTrip,
       submitTask: submitTask,
-      submitTaskUpdate:submitTaskUpdate
     };
   },
 ]);

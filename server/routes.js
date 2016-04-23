@@ -94,6 +94,13 @@ module.exports = function(app) {
   //       sendResponse(res, err, data, 201);
   //     });
   //   });
+  app.route('/api/tasks/getAll:tripId', checkUser)
+    .get(function(req, res) {
+      taskController.getAllTasks(req, function(err, data) {
+        console.log(data)
+        sendResponse(res, err, data, 200);
+      });
+    });
 
   app.route('/api/tasks/update:tripId')
     .put(checkUser, function(req, res) {
