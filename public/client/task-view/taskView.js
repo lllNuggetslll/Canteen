@@ -11,10 +11,10 @@ angular.module('canteen.taskView', ['xeditable'])
       // and updates in db
       task.statusCode = task.statusCode ? 0 : 1;
       trip.updateStatus($scope.trip);
+      console.log($scope.trip.task)
     };
     $scope.updateTask = function() {
       formFactory.submitTaskUpdate($scope.trip.task )
-      console.log($scope.trip.task)
 
     }
   },
