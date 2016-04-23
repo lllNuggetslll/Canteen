@@ -7,7 +7,7 @@ angular.module('canteen.landingPage', [])
     if (window.location.host === 'localhost:3333') {
       $scope.googleUrl = 'http://localhost:3333/connect/google';
     } else {
-      $scope.googleUrl = 'https://canteenapp.herokuapp.com/connect/google';
+      $scope.googleUrl = 'https://canteentrip.herokuapp.com/connect/google';
     }
   },
 ]);
