@@ -110,7 +110,6 @@ angular.module('canteen.tripData', [])
         .catch(function(err) {
           console.error(err)
         })
-
     }
 
     function updateTrip(trip) {
