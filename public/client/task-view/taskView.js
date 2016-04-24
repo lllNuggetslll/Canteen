@@ -12,7 +12,7 @@ angular.module('canteen.taskView', ['xeditable'])
       .then(function(data) {
 
         $scope.taskList = data
-        console.log(15, $scope.taskList)
+          //console.log(15, $scope.taskList)
 
         //console.log(13, $scope.taskList)
       });
@@ -24,8 +24,12 @@ angular.module('canteen.taskView', ['xeditable'])
       trip.updateStatus($scope.trip);
     };
 
-    $scope.updateTask = function() {
-      formFactory.submitTaskUpdate($scope.trip.task)
+    $scope.updateTask = function(task) {
+
+
+      
+      trip.updateTask(task);
+      //formFactory.submitTaskUpdate($scope.trip.task)
     };
 
     $scope.$on('refresh', function() {

@@ -109,13 +109,13 @@ module.exports = function(app) {
   app.route('/api/tasks/getAll:tripId', checkUser)
     .get(function(req, res) {
       taskController.getAllTasks(req, function(err, data) {
-        console.log(data)
         sendResponse(res, err, data, 200);
       });
     });
 
-  app.route('/api/tasks/update:tripId')
-    .put(checkUser, function(req, res) {
+  app.route('/api/task/update2')
+    .put(function(req, res) {
+      console.log('update', req.body)
       taskController.updateTask(req, function(err, data) {
         sendResponse(res, err, data, 200);
       });

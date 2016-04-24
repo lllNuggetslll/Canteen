@@ -18,12 +18,11 @@ module.exports = {
   },
 
   updateTask: function(req, next) {
-    var task = req.body.task
-    Task.find({ tripId: req.params.tripId })
-      .where('tasks._Id').equals(req.params.taskId)
-      .update({ taskName: task.taskName, description: task.description, category: task.category, statusCode: task.statusCode, assignedTo: task.assignedTo }, function(err, task) {
-        next(err, task);
-      });
+    var task = req.body
+    Task.findByIdAndUpdate(task._id, task)
+      .exec(function(err, task){
+        next(err,task);
+      })
   },
 
   getAllTasks: function(req, next) {
