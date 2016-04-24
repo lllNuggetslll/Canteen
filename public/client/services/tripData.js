@@ -85,7 +85,6 @@ angular.module('canteen.tripData', [])
     }
 
     function updateTask(task) {
-      console.log(task)
       return $http({
           method: 'PUT',
           url: '/api/task/update2',
