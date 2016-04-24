@@ -6,16 +6,16 @@ angular.module('canteen.trip', [])
   'NgMap',
   '$stateParams',
   '$location',
-  function ($scope, trip, NgMap, $stateParams, $location) {
+  '$state',
+  function ($scope, trip, NgMap, $stateParams, $location, $state) {
     $scope.trip = null;
     $scope.notUser = false;
     // console.log($stateParams.tripId);
     $scope.checkForUser = function(email) {
       trip.checkForUser(email)
         .then(function(user) {
-          console.log(user.data);
           if (user.data) {
-            $location.path('/user/' + user.id);
+            $state.go('userView', { userId: user.data.id });
           } else {
             $scope.notUser = true;
             setTimeout(function() {
