@@ -111,7 +111,6 @@ angular.module('canteen.tripData', [])
         .catch(function(err) {
           console.error(err)
         })
-
     }
 
     // Factory methods use promises
