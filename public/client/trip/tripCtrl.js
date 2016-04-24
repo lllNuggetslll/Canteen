@@ -28,7 +28,7 @@ angular.module('canteen.trip', [])
 
     trip.getTrip($stateParams.tripId)
     .then(function (tripData) {
-      console.log(tripData)
+      //console.log(tripData)
       $scope.trip = tripData;
       $scope.dates = {
         start: moment($scope.trip.dates.start).format('MMM Do, YYYY'),
