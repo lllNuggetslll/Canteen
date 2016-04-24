@@ -10,11 +10,7 @@ angular.module('canteen.taskView', ['xeditable'])
     $scope.taskList = {};
     trip.getAllTasks($scope.trip._id)
       .then(function(data) {
-
         $scope.taskList = data
-          //console.log(15, $scope.taskList)
-
-        //console.log(13, $scope.taskList)
       });
 
     $scope.updateStatus = function(task) {
@@ -25,18 +21,27 @@ angular.module('canteen.taskView', ['xeditable'])
     };
 
     $scope.updateTask = function(task) {
-
-
-      
       trip.updateTask(task);
-      //formFactory.submitTaskUpdate($scope.trip.task)
     };
+
+    $scope.removeTask = function(task, index) {
+      console.log(task._id)
+
+      trip.deleteTask(task._id)
+        .then(function(data) {
+          if (data) {
+            trip.getAllTasks($scope.trip._id)
+              .then(function(data) {
+                $scope.taskList = data
+              });
+          }
+        })
+    }
 
     $scope.$on('refresh', function() {
       trip.getAllTasks($scope.trip._id)
         .then(function(data) {
-          taskHolder.latestTasks = data;
-          $scope.taskList = taskHolder.latestTasks;
+          $scope.taskList = data;
         });
     });
   }

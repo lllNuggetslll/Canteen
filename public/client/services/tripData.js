@@ -97,7 +97,20 @@ angular.module('canteen.tripData', [])
         .catch(function(err) {
           console.error(err);
         })
+    }
 
+    function deleteTask(taskId) {
+      return $http({
+          method: 'DELETE',
+          url: '/api/task/delete/' + taskId,
+        })
+        .then(function(res) {
+          console.log(res.data)
+          return res.data;
+        })
+        .catch(function(err) {
+          console.error(err)
+        })
     }
 
     // Factory methods use promises
@@ -108,7 +121,8 @@ angular.module('canteen.tripData', [])
       getAllTasks: getAllTasks,
       checkForUser: checkForUser,
       refreshTasks: refreshTasks,
-      updateTask: updateTask
+      updateTask: updateTask,
+      deleteTask: deleteTask
     };
   },
 ]);

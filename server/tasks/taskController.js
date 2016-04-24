@@ -20,8 +20,8 @@ module.exports = {
   updateTask: function(req, next) {
     var task = req.body
     Task.findByIdAndUpdate(task._id, task)
-      .exec(function(err, task){
-        next(err,task);
+      .exec(function(err, task) {
+        next(err, task);
       })
   },
 
@@ -30,7 +30,15 @@ module.exports = {
       .exec(function(err, tasks) {
         next(err, tasks);
       })
+  },
+
+  deleteTask: function(req, next) {
+    Task.findByIdAndRemove(req.params.taskId)
+      .exec(function(err, task) {
+        next(err, task);
+      })
   }
+
 }
 
 
