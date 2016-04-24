@@ -56,4 +56,5 @@ module.exports = {
       next(err, user);
     });
   }
+
 };

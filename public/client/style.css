@@ -181,8 +181,77 @@ body {
   padding-bottom: 50px;
 }
 
+
+/* PROFILE PAGE */
+.profile-right {
+  margin-top: 1em;
+}
+@media only screen and (min-width : 768px) {
+  .profile-left {
+    border-right: 1px solid #ddd;
+    padding-right: 30px;
+  }
+  .profile-right {
+    padding-left: 30px;
+    margin-top: 0;
+  }
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  margin: 15px auto 0;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.panel-link,
+.panel-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.panel-hover:hover {
+  background-color: #f5f5f5;
+}
+.panel-hover:hover .panel-arrow:after {
+  border-left: 50px solid #000;
+}
+
+.panel-arrow {
+  position: relative;
+}
+.panel-arrow:after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 50px solid #fff;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  transform: translateY(-25px);
 }

@@ -30,5 +30,5 @@ angular.module('canteen.navBar', [])
           $scope.loggedIn = false;
         });
     };
-  },
+  }
 ]);

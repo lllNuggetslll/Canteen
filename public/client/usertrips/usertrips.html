@@ -1,10 +1,13 @@
+
 <div ng-if="!noTrips">
   <div ng-repeat="trip in trips | orderBy: 'uglyStart'">
-    <a ng-href="#/trip/{{ trip.id }}">
-      <div>
-        <h4><b>{{ trip.name }}</b> <span>in</span> {{ trip.location }}</h4>
-        <h5>{{ trip.start }}<span> until </span> {{ trip.end }}</h5>
-        <h5>Click to checkout this trip</h5>
+    <a ng-href="#/trip/{{ trip.id }}" class="panel-link">
+      <div class="panel panel-default panel-hover">
+        <div class="panel-body panel-arrow">
+          <h4><b>{{ trip.name }}</b> <span>in</span> {{ trip.location }}</h4>
+          <h5>{{ trip.start }}<span> until </span> {{ trip.end }}</h5>
+          <h5>Click for trip details</h5>
+        </div>
       </div>
     </a>
   </div>

@@ -4,8 +4,6 @@ angular.module('canteen.userTrips', [])
   '$http',
   function($http) {
 
-    // might want to use user email as a parameter to return
-    // only those trips that this user is a part of (invited to)
     var getUserInfo = function(userId) {
       return $http({
         method: 'GET',
