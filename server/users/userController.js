@@ -28,7 +28,8 @@ module.exports = {
   updateUser: function (userId, data, next) {
     User.update( { id: userId }, {
       bio: data.bio,
-      favorite_trips: data.favorite_trips
+      favorite_trips: data.favorite_trips,
+      image_url: data.image_url
     },
     function(err, data) {
       next(err, data);
@@ -49,3 +50,4 @@ module.exports = {
     });
   }
 };
+

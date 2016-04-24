@@ -15,6 +15,8 @@ angular.module('canteen', [
   'canteen.tripMessages',
   'canteen.socketFactory',
   'canteen.timeHelper',
+  'canteen.awsService',
+  'canteen.directives',
   'btford.socket-io',
   'ngMap',
   'ui.bootstrap',

@@ -180,3 +180,9 @@ body {
   margin-bottom: 50px;
   padding-bottom: 50px;
 }
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}

@@ -10,9 +10,11 @@
 
         <!-- Left column: User Profile Info -->
         <div class="col-sm-3">
+
           <h4>{{ user.email }}</h4>
 
           <div ng-if="!updateAble">
+            <img class="profile-pic" ng-src="{{ user.image_url }}" />
             <p>
               <b>My favorite destinations:</b>
               <br>
@@ -27,12 +29,18 @@
           </div>
 
           <div ng-if="updateAble">
+
+            <input type="file" custom-on-change="uploadFile" />
+            <p id="status">Please select a profile image</p>
+            <img class="profile-pic" ng-src="{{ user.image_url }}" />
+
             <form id="userUpdateForm" ng-submit="updateProfile()" novalidate>
+              <input type="hidden" ng-model="user.image_url" />
               <label for="favorite-trips">My favorite destinations:</label>
-              <input class="form-control" id="favorite-trips" type="text" ng-model="user.favorite_trips" ng-model-options="{ updateOn: 'submit' }" required></input>
+              <input class="form-control" id="favorite-trips" type="text" ng-model="user.favorite_trips" ng-model-options="{ updateOn: 'submit' }" required />
 
               <label for="user-bio">About me:</label>
-              <input class="form-control" id="user-bio" type="text" ng-model="user.bio" ng-model-options="{ updateOn: 'submit' }" required></input>
+              <input class="form-control" id="user-bio" type="text" ng-model="user.bio" ng-model-options="{ updateOn: 'submit' }" required />
 
               <br>
 

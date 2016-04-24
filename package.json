@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/CanteenApp/Canteen#readme",
   "dependencies": {
+    "aws-sdk": "^2.3.5",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
     "bower": "^1.7.9",

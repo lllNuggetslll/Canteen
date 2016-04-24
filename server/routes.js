@@ -3,6 +3,11 @@ var taskController = require('./tasks/taskController.js');
 var userController = require('./users/userController');
 var messagesController = require('./messages/messagesController');
 var Purest = require('purest');
+var aws = require('aws-sdk');
+var config = require('./.config/.secrets.json');
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY || config['aws']['AWS_ACCESS_KEY'];
+var AWS_SECRET_ACCESS = process.env.AWS_SECRET_ACCESS || config['aws']['AWS_SECRET_ACCESS'];
+var S3_BUCKET_NAME = process.env.S3_BUCKET_NAME || config['aws']['S3_BUCKET_NAME'];
 
 var google = new Purest({ provider: 'google' });
 
@@ -150,6 +155,32 @@ module.exports = function(app) {
     .get(function(req, res) {
       req.session.destroy(function(err) {
         sendResponse(res, err, {}, 200);
+      });
+    });
+
+  app.route('/sign_s3')
+    .get(checkUser, function (req, res) {
+      var file_extension = req.query.file_name.split('.')[1];
+      aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_ACCESS});
+      var s3 = new aws.S3();
+      var s3_params = {
+        Bucket: S3_BUCKET_NAME,
+        Key: req.session.user.id+'.'+file_extension,
+        Expires: 60,
+        ContentType: req.query.file_type,
+        ACL: 'public-read'
+      };
+      s3.getSignedUrl('putObject', s3_params, function(err, data){
+        if(err){
+          console.log(err);
+        }
+        else{
+          var return_data = {
+            signed_request: data,
+            url: 'https://'+S3_BUCKET_NAME+'.s3.amazonaws.com/'+req.session.user.id+'.'+file_extension
+          };
+          sendResponse(res, err, return_data, 200);
+        }
       });
     });
 };

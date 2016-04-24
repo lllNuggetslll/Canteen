@@ -4,15 +4,18 @@ angular.module('canteen.user', [])
   '$scope',
   '$stateParams',
   'userTrips',
-  function ($scope, $stateParams, userTrips) {
+  'awsService',
+  function ($scope, $stateParams, userTrips, awsService) {
     // console.log($stateParams.userId);
-
+    var imgTypes = ['image/jpeg', 'image/png'];
     $scope.user = {};
+
     $scope.user.given_name = 'John';
     $scope.user.family_name = 'Doe';
     $scope.user.email = 'johndoe@gmail.com';
     $scope.user.favorite_trips = 'Disney World';
     $scope.user.bio = "I am just a simple man. Not a simpleton. I wasn't referring to my brain capacity. I meant more like that I don't have expensive tastes. That sort of thing.";
+    $scope.user.image_url = 'img/face.svg';
 
     $scope.updateAble = false;
 
@@ -37,7 +40,8 @@ angular.module('canteen.user', [])
       $scope.toggleProfileUpdate();
       var profile = {
         favorite_trips: $scope.user.favorite_trips,
-        bio: $scope.user.bio
+        bio: $scope.user.bio,
+        image_url: $scope.user.image_url
       };
       userTrips.updateUser(profile, $scope.user.id)
         .then(function(data) {
@@ -46,5 +50,25 @@ angular.module('canteen.user', [])
         });
     };
 
+    $scope.uploadFile = function(e) {
+      var file = e.target.files[0];
+      console.log(file);
+      if (file.size > 40000) {
+        alert('Please select an image smaller than 40kb.');
+      } else if (file == null) {
+        alert('No file selected.');
+      } else if (imgTypes.indexOf(file.type) === -1) {
+        alert('Please select a PNG or JPEG.');
+      } else {
+        awsService.getSignedReq(file)
+        .then(function (putObj) {
+          awsService.uploadFile(file, putObj, function(url) {
+            $scope.user.image_url = url;
+            $scope.$apply();
+            console.log($scope.user.image_url);
+          });
+        });
+      }
+    };
   }
 ]);
