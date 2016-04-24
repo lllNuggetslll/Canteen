@@ -3,7 +3,8 @@ angular.module('canteen.tripData', [])
 .factory('trip', [
   '$http',
   '$location',
-  function($http, $location) {
+  '$rootScope',
+  function($http, $location, $rootScope) {
     function getTrip(tripId) {
       return $http({
           method: 'GET',
@@ -76,13 +77,21 @@ angular.module('canteen.tripData', [])
       });
     }
 
+
+    function refreshTasks($rootScope) {
+      console.log('in!')
+      $rootScope.$broadcast('refresh');
+    }
+
+
     // Factory methods use promises
     return {
       getTrip: getTrip,
       updateStatus: updateStatus,
       submitTaskUpdate: submitTaskUpdate,
       getAllTasks: getAllTasks,
-      checkForUser: checkForUser
+      checkForUser: checkForUser,
+      refreshTasks: refreshTasks
     };
   },
 ]);
