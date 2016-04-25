@@ -4,6 +4,7 @@ angular.module('canteen.userTrips', [])
   '$http',
   function($http) {
 
+
     var getUserInfo = function(userId) {
       return $http({
         method: 'GET',

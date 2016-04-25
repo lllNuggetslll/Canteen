@@ -164,6 +164,7 @@ module.exports = function(app) {
         userController.createUser(body, function(err, user) {
           // set session user to returned record
           req.session.user = user;
+
           res.redirect('/#/user/' + user.id);
         });
       });
