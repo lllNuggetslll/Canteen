@@ -70,7 +70,11 @@ module.exports = function(app) {
         userObj.userId = req.session.user.id;
         userController.getUser(req.session.user.id, function(err, user) {
           if (user) {
+<<<<<<< HEAD
             userObj.email = user.email;
+=======
+            userObj.user = user;
+>>>>>>> refactor set user
           }
           res.send(200, userObj);
         });
@@ -99,9 +103,9 @@ module.exports = function(app) {
     .delete(function(req, res) {
       tripsController.deleteTrip(req, function(err, data) {
         sendResponse(res, err, data, 204);
-      })
+      });
 
-    })
+    });
     // .put(checkUser, function(req, res) {
     //   tripsController.updateTrip(req, function(err, data) {
     //     sendResponse(res, err, data, 200);
