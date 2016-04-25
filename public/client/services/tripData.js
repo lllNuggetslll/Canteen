@@ -133,6 +133,7 @@ angular.module('canteen.tripData', [])
           url: '/api/trip/delete' + tripId
         })
         .then(function(res) {
+          console.log(res)
           return res.data;
         })
         .catch(function(err) {
