@@ -3,9 +3,8 @@ angular.module('canteen.taskView', ['xeditable'])
 .controller('taskView', [
   '$scope',
   'trip',
-  'taskHolder',
   'socket',
-  function($scope, trip, taskHolder, socket) {
+  function($scope, trip, socket) {
     $scope.taskList = {};
     trip.getAllTasks($scope.trip._id)
       .then(function(data) {
@@ -25,18 +24,18 @@ angular.module('canteen.taskView', ['xeditable'])
           if (data) {
             trip.getAllTasks($scope.trip._id)
               .then(function(data) {
-                $scope.taskList = data
+                socket.emit('taskList:update', data);
               });
           }
         });
     };
 
-    $scope.$on('refresh', function() {
-      trip.getAllTasks($scope.trip._id)
-        .then(function(data) {
-          $scope.taskList = data;
-        });
-    });
+    // $scope.$on('refresh', function() {
+    //   trip.getAllTasks($scope.trip._id)
+    //     .then(function(data) {
+    //       $scope.taskList = data;
+    //     });
+    // });
 
     socket.on('task:broadcast', function(updatedTask) {
       if (updatedTask.tripId === $scope.trip._id) {
@@ -47,16 +46,22 @@ angular.module('canteen.taskView', ['xeditable'])
         }
       }
     });
-  }
-])
 
-.factory('taskHolder', ['$rootScope',
-  function($rootScope) {
-    function refreshTasks() {
-      $rootScope.$broadcast('refresh');
-    }
-    return {
-      refreshTasks: refreshTasks
-    }
+    socket.on('taskList:broadcast', function(taskList) {
+      if (taskList[0].tripId === $scope.trip._id) {
+        $scope.taskList = taskList;
+      }
+    });
   }
 ]);
+
+// .factory('taskHolder', ['$rootScope',
+//   function($rootScope) {
+//     function refreshTasks() {
+//       $rootScope.$broadcast('refresh');
+//     }
+//     return {
+//       refreshTasks: refreshTasks
+//     }
+//   }
+// ]);

@@ -9,8 +9,11 @@ module.exports = function(server) {
     });
 
     socket.on('task:update', function(task) {
-      console.log(task);
       io.emit('task:broadcast', task);
+    });
+
+    socket.on('taskList:update', function(taskList) {
+      io.emit('taskList:broadcast', taskList);
     });
   });
   return io;
