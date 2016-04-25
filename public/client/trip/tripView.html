@@ -4,7 +4,7 @@
 
       <div class="panel-heading">
         <h3 class="panel-title" editable-text="trip.tripName" onbeforesave="updateTrip(trip)"> {{ trip.tripName }} </h3>
-        <button style="float: right;" class="btn btn-danger col-sm-1" ng-click="removeTask(task, $index)">delete</button>
+        <button style="float: right;" class="btn btn-danger col-sm-1" ng-click="deleteTrip(trip)">delete</button>
       </div>
 
       <div class="panel-body">
@@ -30,7 +30,7 @@
             </span>
             <span ng-show="notUser" class="ng-hide">Not a User!</span>
           </p>
-          <p editable-bsdate="dates.start" e-is-open="opened.$data" onbeforesave="updateTrip(trip)" e-datepicker-popup="dd-MMMM-yyyy"><strong>Dates:</strong>
+          <p editable-bsdate="dates.start"  onbeforesave="updateTrip(trip)" type="date"><strong>Dates:</strong>
             <br>
             {{ dates.start }} &nbsp;-&nbsp; {{ dates.end }}
           </p>
