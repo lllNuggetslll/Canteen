@@ -70,11 +70,7 @@ module.exports = function(app) {
         userObj.userId = req.session.user.id;
         userController.getUser(req.session.user.id, function(err, user) {
           if (user) {
-<<<<<<< HEAD
             userObj.email = user.email;
-=======
-            userObj.user = user;
->>>>>>> refactor set user
           }
           res.send(200, userObj);
         });
@@ -178,6 +174,7 @@ module.exports = function(app) {
         userController.createUser(body, function(err, user) {
           // set session user to returned record
           req.session.user = user;
+
           res.redirect('/#/user/' + user.id);
         });
       });
