@@ -4,7 +4,7 @@
 
       <div class="panel-heading">
         <h3 class="panel-title" editable-text="trip.tripName" onbeforesave="updateTrip(trip)"> {{ trip.tripName }} </h3>
-        <button style="float: right;" class="btn btn-danger col-sm-1" ng-click="removeTask(task, $index)">delete</button>
+        <button style="float: right;" class="btn btn-danger col-sm-1" ng-click="deleteTrip(trip)">delete</button>
       </div>
 
       <div class="panel-body">

@@ -1,4 +1,4 @@
-angular.module('canteen.trip', ['xeditable', 'ui.bootstrap'])
+angular.module('canteen.trip', ['xeditable'])
 
 .controller('tripCtrl', [
   '$scope',
@@ -28,6 +28,11 @@ angular.module('canteen.trip', ['xeditable', 'ui.bootstrap'])
      $scope.updateTrip = function(Trip){
         console.log(Trip)
         trip.updateTrip(Trip);
+     };
+
+     $scope.deleteTrip = function(Trip){
+      console.log(Trip._id)
+      trip.deleteTrip(Trip._id);
      };
 
     trip.getTrip($stateParams.tripId)

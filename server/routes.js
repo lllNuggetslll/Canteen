@@ -92,6 +92,15 @@ module.exports = function(app) {
         });
       });
     })
+
+  app.route('/api/trip/delete:tripId')
+    .delete(function(req, res) {
+      console.log(req.params.tripId)
+      tripsController.deleteTrip(req, function(err, data) {
+        sendResponse(res, err, data, 200);
+      })
+
+    })
     // .put(checkUser, function(req, res) {
     //   tripsController.updateTrip(req, function(err, data) {
     //     sendResponse(res, err, data, 200);

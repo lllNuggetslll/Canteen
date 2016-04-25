@@ -1,5 +1,9 @@
 var Trip = require('./tripModel');
+<<<<<<< HEAD
 var mailer = require('../utils/autoEmails');
+=======
+var Task = require('../tasks/taskModel.js');  //Needed to delete all trip tasks when deleting a trip
+>>>>>>> Made trips deletable
 
 module.exports = {
 
@@ -45,6 +49,29 @@ module.exports = {
         next(err, trip);
       });
   },
+
+  deleteTrip: function(req, next){
+    var tripId = req.params.tripId;
+    Trip.findByIdAndRemove(tripId)
+      .exec(function (err, trip){
+        if(err){
+          next(err)
+        }else{
+          // Task.findAll({tripId: tripId})
+          //   .remove()
+
+
+          next(trip);
+
+
+
+        }
+
+
+
+      })
+
+  }
 
   // add a task to tasks array on trip
   // addTask: function (req, next) {
