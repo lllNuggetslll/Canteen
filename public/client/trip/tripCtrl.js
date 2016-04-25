@@ -32,7 +32,12 @@ angular.module('canteen.trip', ['xeditable'])
 
      $scope.deleteTrip = function(Trip){
       console.log(Trip._id)
-      trip.deleteTrip(Trip._id);
+      trip.deleteTrip(Trip._id)
+      .then(function(data){
+        if(data){
+          
+        }
+      })
      };
 
     trip.getTrip($stateParams.tripId)
