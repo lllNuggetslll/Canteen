@@ -42,13 +42,10 @@ module.exports = function(app) {
 
   /* All User's Info */
   app.route('/api/user/:userId', checkUser)
-    .get(checkUser, function(req, res) {
+    .get(function(req, res) {
       userController.getUser(req.params.userId, function(err, user) {
         if (!user) {
-          sendResponse(res, err, {
-            user: req.session.user,
-            trips: false
-          }, 200);
+          res.redirect('/#/landing-page')
         } else {
           tripsController.getAllUserTrips(user.email, function(err, trips) {
             sendResponse(res, err, {
@@ -98,9 +95,8 @@ module.exports = function(app) {
       });
     })
 
-  app.route('/api/trip/delete:tripId')
+  app.route('/api/trip/delete/:tripId')
     .delete(function(req, res) {
-      console.log(98,req.params.tripId)
       tripsController.deleteTrip(req, function(err, data) {
         sendResponse(res, err, data, 204);
       })
@@ -178,7 +174,6 @@ module.exports = function(app) {
         userController.createUser(body, function(err, user) {
           // set session user to returned record
           req.session.user = user;
-
           res.redirect('/#/user/' + user.id);
         });
       });

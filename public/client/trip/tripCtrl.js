@@ -10,9 +10,13 @@ angular.module('canteen.trip', ['xeditable'])
   'authFactory',
   function ($scope, trip, NgMap, $stateParams, $location, $state, authFactory) {
     $scope.trip = null;
+
+    $scope.invitedUser = false;
+
     $scope.notUser = false;
     $scope.currentUser = null;
     $scope.loggedIn = false;
+
     authFactory.setUser()
       .then(function(user) {
         if (user.userId) {
@@ -59,6 +63,17 @@ angular.module('canteen.trip', ['xeditable'])
         start: moment($scope.trip.dates.start).format('MMM Do, YYYY'),
         end: moment($scope.trip.dates.end).format('MMM Do, YYYY')
       };
+      if ($scope.currentUser) {
+        var members = [];
+        tripData.members.forEach(function(member) {
+          members.push(member.email);
+        });
+
+        // console.log($scope.currentUser.email);
+        if (members.indexOf($scope.currentUser.email) !== -1) {
+          $scope.invitedUser = true;
+        }
+      }
     });
 
     $scope.color = {

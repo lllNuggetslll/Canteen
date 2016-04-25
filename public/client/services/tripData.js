@@ -130,7 +130,7 @@ angular.module('canteen.tripData', [])
     function deleteTrip(tripId) {
       return $http({
           method: 'DELETE',
-          url: '/api/trip/delete' + tripId
+          url: '/api/trip/delete/' + tripId
         })
         .then(function(res) {
           console.log(res)

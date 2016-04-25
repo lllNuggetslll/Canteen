@@ -1,4 +1,5 @@
 
+
 <div ng-if="!noTrips">
   <div ng-repeat="trip in trips | orderBy: 'uglyStart'">
     <a ng-href="#/trip/{{ trip.id }}" class="panel-link">

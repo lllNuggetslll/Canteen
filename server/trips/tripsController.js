@@ -50,7 +50,7 @@ module.exports = {
   // delete a trip and all tasks by ID
   deleteTrip: function(req, next) {
     var tripId = req.params.tripId;
-    Trip.findByIdAndRemove(tripId,null, function(err, trip){
+    Trip.findByIdAndRemove(tripId, function(err, trip){
        if (err) {
           next(err)
         } else {
