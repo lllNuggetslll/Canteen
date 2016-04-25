@@ -130,7 +130,6 @@ module.exports = function(app) {
 
   app.route('/api/task/add/:tripId')
     .post(function(req, res) {
-      console.log("route", req.body)
       taskController.addTask(req, function(err, data) {
         sendResponse(res, err, data, 200);
       });
