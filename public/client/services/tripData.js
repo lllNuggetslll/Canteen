@@ -91,7 +91,7 @@ angular.module('canteen.tripData', [])
         data: task
       })
       .then(function(res) {
-        return res;
+        return res.data;
       })
       .catch(function(err) {
         console.error(err);

@@ -7,6 +7,11 @@ module.exports = function(server) {
     socket.on('message:send', function (msg) {
       io.emit('message:broadcast', msg);
     });
+
+    socket.on('task:update', function(task) {
+      console.log(task);
+      io.emit('task:broadcast', task);
+    });
   });
   return io;
 };
