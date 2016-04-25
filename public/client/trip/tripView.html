@@ -30,7 +30,7 @@
             </span>
             <span ng-show="notUser" class="ng-hide">Not a User!</span>
           </p>
-          <p editable-bsdate="dates.start" e-is-open="opened.$data" onbeforesave="updateTrip(trip)" e-datepicker-popup="dd-MMMM-yyyy"><strong>Dates:</strong>
+          <p editable-bsdate="dates.start"  onbeforesave="updateTrip(trip)" type="date"><strong>Dates:</strong>
             <br>
             {{ dates.start }} &nbsp;-&nbsp; {{ dates.end }}
           </p>
