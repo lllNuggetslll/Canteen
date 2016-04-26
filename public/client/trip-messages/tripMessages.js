@@ -24,9 +24,6 @@ angular.module('canteen.tripMessages', [])
     // if message.tripId === scope.tripId, push it to messages list
     socket.on('message:broadcast', function(msg) {
       if (msg.trip_id === $scope.trip._id) {
-
-        // convert msg.createdAt to proper time zone, etc.
-
         $scope.messages.push({
           username: msg.username,
           message: msg.message,

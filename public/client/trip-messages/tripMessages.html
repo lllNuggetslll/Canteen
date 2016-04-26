@@ -1,12 +1,14 @@
 <div class="col-sm-12">
   <!-- Add Message -->
+  <hr>
+  <h4>Trip Messages</h4>
   <section class="col-sm-5 col-sm-push-7 trip-messages-left">
     <form name="addMessageForm" ng-submit="submitMessage(addMessageForm.$valid)" novalidate>
       <div class="form-group">
         <label for="inputMessage">New Message:</label>
         <input type="text" class="form-control" placeholder="Your message to the group" id="inputMessage" ng-model="messageForm.message" required></input>
       </div>
-      <button class="buttons btn" ng-disabled="addMessageForm.$invalid" disabled="disabled">Submit</button>
+      <button class="buttons btn trip-msg-btn" ng-disabled="addMessageForm.$invalid" disabled="disabled">Submit</button>
     </form>
   </section>
   <!-- Messages Display -->

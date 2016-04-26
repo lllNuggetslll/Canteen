@@ -228,6 +228,18 @@ Trip Overview
   }
 }
 
+.trip-msg-btn {
+  margin-bottom: 15px;
+}
+
+.user-profile-link {
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.2s;
+}
+.user-profile-link:hover {
+  color: #FF0000;
+}
 /*body {
   padding-top: 50px;
   margin-bottom: 50px;

@@ -31,13 +31,6 @@ angular.module('canteen.taskView', ['xeditable'])
         });
     };
 
-    // $scope.$on('refresh', function() {
-    //   trip.getAllTasks($scope.trip._id)
-    //     .then(function(data) {
-    //       $scope.taskList = data;
-    //     });
-    // });
-
     socket.on('task:broadcast', function(updatedTask) {
       if (updatedTask.tripId === $scope.trip._id) {
         for (var task in $scope.taskList) {
@@ -55,14 +48,3 @@ angular.module('canteen.taskView', ['xeditable'])
     });
   }
 ]);
-
-// .factory('taskHolder', ['$rootScope',
-//   function($rootScope) {
-//     function refreshTasks() {
-//       $rootScope.$broadcast('refresh');
-//     }
-//     return {
-//       refreshTasks: refreshTasks
-//     }
-//   }
-// ]);

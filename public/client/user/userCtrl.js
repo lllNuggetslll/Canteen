@@ -12,15 +12,7 @@ angular.module('canteen.user', [])
     $scope.user = {};
 
     $scope.userOwnsProfile = false;
-    // $scope.user.given_name = 'John';
-    // $scope.user.family_name = 'Doe';
-    // $scope.user.email = 'johndoe@gmail.com';
-    // $scope.user.favorite_trips = 'Disney World';
-    // $scope.user.bio = "I am just a simple man. Not a simpleton. I wasn't referring to my brain capacity. I meant more like that I don't have expensive tastes. That sort of thing.";
-    // $scope.user.image_url = 'img/face.svg';
-
     $scope.updateAble = false;
-
     $scope.trips = [];
     $scope.noTrips = true;
 
